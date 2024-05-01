@@ -1,28 +1,32 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import API from "../services/axios-config";
 
 function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [commentText, setCommentText] = useState('');
     const [comments, setComments] = useState([]);
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         async function fetchProduct() {
+            setLoading(true)
             try {
-                const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+                const response = await API.get(`/products/${id}`);
                 setProduct(response.data);
-                // Para cada ID de comentário, fazer uma chamada separada para buscar o comentário completo
+
                 const commentIds = response.data.comments;
                 const commentRequests = commentIds.map(commentId =>
-                    axios.get(`http://localhost:5000/api/comments/${commentId}`)
+                    API.get(`/comments/${commentId}`)
                 );
                 const commentResponses = await Promise.all(commentRequests);
                 const commentData = commentResponses.map(response => response.data);
                 setComments(commentData);
             } catch (error) {
                 console.error('Error fetching product:', error);
+            } finally {
+                setLoading(false);
             }
         }
 
@@ -31,7 +35,6 @@ function ProductDetails() {
 
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
-        alert(`http://localhost:5000/api/comments/${id}`)
         try {
 
             const commentDTO = {
@@ -39,19 +42,20 @@ function ProductDetails() {
                 user: "60db8c102f7f5c30289d6b20"
             }
 
-            await axios.post(`http://localhost:5000/api/comments/${id}`, commentDTO);
+            const response = await API.post(`/comments/${id}`, commentDTO);
             alert('Comment added successfully!');
+            setComments([...comments, response.data]);
+
             setCommentText('');
         } catch (error) {
             console.error('Error adding comment:', error);
-            // alert('Erro ao adicionar comentário!');
 
         }
     };
 
     return (
         <div className="container mx-auto mt-4">
-            {product ? (
+            {product && !loading ? (
                 <div>
                     <h2 className="text-2xl font-bold mb-4">{product.productName}</h2>
                     <p className="mb-4">{product.productQuantity}</p>
