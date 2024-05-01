@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "productName": {
+            "type": "string"
+        },
+        "productCategory": {
+            "type": "string"
+        },
+        "comments": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "productName",
+        "productCategory"
+    ]
+}

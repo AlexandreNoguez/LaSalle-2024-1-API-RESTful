@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "text": {
+            "type": "string"
+        },
+        "user": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "text",
+        "user"
+    ]
+}
