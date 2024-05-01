@@ -64,7 +64,7 @@ function ProductDetails() {
                             <label className="block text-sm font-bold mb-2" htmlFor="commentText">Add Comment:</label>
                             <textarea
                                 id="commentText"
-                                className="border border-gray-300 rounded p-2 w-full"
+                                className="border border-gray-300 rounded p-2 min-w-60 w-full"
                                 value={commentText}
                                 onChange={(e) => setCommentText(e.target.value)}
                             />
