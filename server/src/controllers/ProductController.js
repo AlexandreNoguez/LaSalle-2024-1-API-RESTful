@@ -1,12 +1,21 @@
-const Comment = require("../models/CommentsModel");
-const Product = require("../models/ProductsModel");
+const Ajv = require('ajv');
+const productSchema = require('../models/Product/ProductSchema.json');
+
+const Product = require("../models/Product/ProductsModel");
+
+const ajv = new Ajv();
+const validateProduct = ajv.compile(productSchema);
 
 const create = async (req, res) => {
     try {
         const { productName, productQuantity } = req.body;
 
-        if (!productName || !productQuantity) {
-            return res.status(400).send({ message: 'Some fields are missing' })
+        Number(productQuantity);
+        console.log(typeof (productQuantity));
+        const isValid = validateProduct(req.body);
+
+        if (!isValid) {
+            return res.status(400).send({ message: 'Invalid data', errors: validateProduct.errors });
         }
 
         if (await Product.findOne({ productName })) {
@@ -20,10 +29,10 @@ const create = async (req, res) => {
 
         await product.save();
 
-        return res.status(201).json(product);
+        return res.status(201).send(product);
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: 'Internal server error', error: error.message });
+        return res.status(500).send({ message: 'Internal server error', error: error.message });
     }
 };
 

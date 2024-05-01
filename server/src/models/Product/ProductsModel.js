@@ -1,4 +1,4 @@
-const mongoose = require("../database/db");
+const mongoose = require("../../database/db");
 
 const ProductSchema = new mongoose.Schema(
     {
@@ -6,8 +6,8 @@ const ProductSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        productQuantity: {
-            type: Number,
+        productCategory: {
+            type: String,
             required: true
         },
         comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }] // Referência aos comentários

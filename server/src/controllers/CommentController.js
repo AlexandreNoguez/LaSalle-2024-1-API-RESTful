@@ -1,5 +1,5 @@
-const Comment = require('../models/CommentsModel');
-const Product = require('../models/ProductsModel');
+const Comment = require('../models/Comment/CommentsModel');
+const Product = require('../models/Product/ProductsModel');
 
 const create = async (req, res) => {
     try {
