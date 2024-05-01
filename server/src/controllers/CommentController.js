@@ -5,8 +5,8 @@ const create = async (req, res) => {
     try {
         const { id } = req.params;
         const { text, user } = req.body;
-        console.log(text, user);
-        const product = await Comment.findById(id);
+
+        const product = await Product.findById(id);
         if (!product) {
             return res.status(404).send({ message: 'Product not found' });
         }
