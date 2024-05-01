@@ -6,10 +6,13 @@ function Header() {
             <div className="container mx-auto">
                 <ul className="flex">
                     <li className="mr-6">
-                        <Link to="/" className="hover:text-gray-300">Home</Link>
+                        <Link to="/" className="hover:text-gray-300">Início</Link>
                     </li>
                     <li className="mr-6">
-                        <Link to="/product/add" className="hover:text-gray-300">Add Product</Link>
+                        <Link to="/product/add" className="hover:text-gray-300">Adicionar Produtos</Link>
+                    </li>
+                    <li className="mr-6">
+                        <Link to="/dashboard" className="hover:text-gray-300">Dashoard</Link>
                     </li>
                 </ul>
             </div>
