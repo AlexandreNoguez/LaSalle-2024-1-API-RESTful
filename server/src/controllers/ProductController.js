@@ -8,10 +8,8 @@ const validateProduct = ajv.compile(productSchema);
 
 const create = async (req, res) => {
     try {
-        const { productName, productQuantity } = req.body;
+        const { productName, productCategory } = req.body;
 
-        Number(productQuantity);
-        console.log(typeof (productQuantity));
         const isValid = validateProduct(req.body);
 
         if (!isValid) {
@@ -24,7 +22,7 @@ const create = async (req, res) => {
 
         const product = new Product({
             productName,
-            productQuantity
+            productCategory
         });
 
         await product.save();
@@ -64,7 +62,7 @@ const findById = async (req, res) => {
 const update = async (req, res) => {
     try {
         const { id } = req.params;
-        const { productName, productQuantity } = req.body;
+        const { productName, productCategory } = req.body;
 
         if (!id) {
             return res.status(401).send({ message: "Not found" })
@@ -72,7 +70,7 @@ const update = async (req, res) => {
 
         const productDetails = {
             productName,
-            productQuantity,
+            productCategory,
         }
 
         const updatedProduct = await Product.findByIdAndUpdate({
