@@ -23,7 +23,6 @@ function Home() {
         if (isConfirmed) {
             try {
                 await API.delete(`/products/${productId}`);
-                // Atualizar a lista de produtos após a exclusão
                 fetchProducts();
             } catch (error) {
                 console.error('Error deleting product:', error);
@@ -55,9 +54,16 @@ function Home() {
                                     {product.productCategory}
                                 </td>
                                 <td className="flex gap-2 text-center px-4 py-2">
-                                    <p className="text-red-600 cursor-pointer" onClick={() => confirmDelete(product._id)}>X</p>
+                                    <p
+                                        className="cursor-pointer"
+                                        onClick={() => confirmDelete(product._id)}
+                                    >
+                                        ❌
+                                    </p>
                                     <Link to={`/product/edit/${product._id}`}>
-                                        <p className="text-blue-600">Editar</p>
+                                        <p className="text-blue-600">
+                                            🖊
+                                        </p>
                                     </Link>
                                 </td>
                             </tr>
