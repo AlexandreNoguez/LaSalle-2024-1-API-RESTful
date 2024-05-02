@@ -36,7 +36,7 @@ function BarChart({ dataChart }) {
             },
             title: {
                 display: true,
-                text: 'Chart.js Bar Chart',
+                text: 'Contagem de itens por categoria',
             },
         },
     };
@@ -47,7 +47,7 @@ function BarChart({ dataChart }) {
             {
                 label: 'Dataset 1',
                 data: dataChart?.quantities,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                backgroundColor: '#5861ff',
             },
         ],
     };
