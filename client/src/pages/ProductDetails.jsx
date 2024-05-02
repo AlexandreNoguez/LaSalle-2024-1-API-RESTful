@@ -76,8 +76,6 @@ function ProductDetails() {
                         <ul>
                             {comments.map(comment => (
                                 <li key={comment._id} className="mb-2">
-                                    {console.log(comment)}
-                                    {comment._id === id}
                                     <p>{comment.text}</p>
                                 </li>
                             ))}
