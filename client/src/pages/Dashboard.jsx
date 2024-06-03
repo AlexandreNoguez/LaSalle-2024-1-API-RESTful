@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import BarChart from "../components/BarChart";
 import API from "../services/axios-config";
 import { separateCategories } from "../helpers/separateCategories";
@@ -7,6 +6,19 @@ import PieChart from "../components/PieChart";
 
 function Dashboard() {
     const [dataChart, setDataChart] = useState();
+    const [quantitiesCount, setQuantitiesCount] = useState();
+
+    useEffect(() => {
+        if (dataChart) {
+
+            let sum = 0;
+
+            for (let i = 0; i < dataChart.quantities.length; i++) {
+                sum += dataChart.quantities[i];
+            }
+            setQuantitiesCount(sum);
+        }
+    }, [dataChart])
 
     const getData = async () => {
         const { data } = await API.get('/products');
@@ -33,16 +45,17 @@ function Dashboard() {
         <div className="container mt-4">
             <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
             <div className="flex justify-between">
-                <div>
-                    <h3 className="text-lg font-semibold mb-2">Categories</h3>
-                    {/* <p>Total: {categoriesCount.length}</p> */}
-                    <Link to="/categories" className="text-blue-500 hover:underline">View Categories</Link>
-                </div>
-                <div>
-                    <h3 className="text-lg font-semibold mb-2">Products</h3>
-                    {/* <p>Total: {productsCount.length}</p> */}
-                    <Link to="/" className="text-blue-500 hover:underline">View Products</Link>
-                </div>
+                {dataChart ? (
+                    <>
+                        <div>
+                            <h3 className="text-lg font-semibold mb-2">Total de Categorias: {dataChart?.categoryNames?.length}</h3>
+                        </div>
+                        <div>
+                            <h3 className="text-lg font-semibold mb-2">Total de Produtos: {quantitiesCount}</h3>
+                        </div>
+                    </>
+                ) : null}
+
             </div>
             <div className="mt-8">
                 <h3 className="text-lg font-semibold mb-2">Quantidade de produtos por categoria</h3>
