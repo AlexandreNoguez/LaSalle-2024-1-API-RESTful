@@ -25,18 +25,22 @@
 git clone https://github.com/AlexandreNoguez/LaSalle-2024-1-API-RESTful
 ```
 
-2. Acesse o diretório do projeto e execute o script start.sh:
+2. Acesse o diretório do projeto e execute os comandos:
 ```bash
-cd LaSalle-2024-1-API-RESTful
+cd LaSalle-2024-1-API-RESTful/client
+npm install
+```
+
+```bash
+cd ../server
+npm install
+```
+3. Configure o arquivo **.env** com as credenciais do seu banco de acordo com o **.env.example** tanto no cliente quanto no servidor.
+
+4. Executando os projetos
+```bash 
 ./start.sh
 ```
-3. Configure o arquivo **.env** com as credenciais do seu banco de acordo com o **.env.example**
-
-4. Caso o script não funcione, basta utilizar o comando 
-```bash 
-npm install && npm run dev
-```
-dentro da pasta client e em outro terminal na pasta server também.
 
 5. Quando terminar de executar todos os comandos, o projeto pode ser acessado no navegador <a href="http://localhost:5173">localhost</a>.
 

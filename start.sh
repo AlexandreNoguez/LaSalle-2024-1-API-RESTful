@@ -3,14 +3,14 @@
 # Navegue para o diretório do cliente
 cd client
 
-# Instale as dependências e execute o servidor de desenvolvimento do cliente
-npm install && npm run dev &
+# Execute o servidor de desenvolvimento do cliente
+npm run dev &
 
 # Navegue para o diretório do servidor
 cd ../server
 
-# Instale as dependências e execute o servidor de desenvolvimento do servidor
-npm install && npm run dev &
+# Execute o servidor de desenvolvimento do servidor
+npm run dev &
 
 # Aguarde um segundo para garantir que os servidores tenham iniciado corretamente
 sleep 1
