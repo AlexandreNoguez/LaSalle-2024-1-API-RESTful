@@ -1,6 +1,10 @@
 const Comment = require('../models/Comment/CommentsModel');
 const Product = require('../models/Product/ProductsModel');
 
+/**
+ * 
+ * Função para criar comentários
+ */
 const create = async (req, res) => {
     try {
         const { id } = req.params;
@@ -26,6 +30,10 @@ const create = async (req, res) => {
     }
 };
 
+/**
+ * 
+ * Função para listar comentários
+ */
 const list = async (req, res) => {
     try {
         const listAllComments = await Comment.find();
@@ -36,6 +44,10 @@ const list = async (req, res) => {
     }
 }
 
+/**
+ * 
+ * Função para listar por id
+ */
 const findById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -51,6 +63,10 @@ const findById = async (req, res) => {
     }
 }
 
+/**
+ * 
+ * Função para atualizar por id
+ */
 const update = async (req, res) => {
     try {
         const { id } = req.params;
@@ -86,6 +102,10 @@ const update = async (req, res) => {
     }
 }
 
+/**
+ * 
+ * Função para demover por id
+ */
 const remove = async (req, res) => {
     try {
         const { id } = req.params;

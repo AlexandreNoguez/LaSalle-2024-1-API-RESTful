@@ -6,6 +6,10 @@ const Product = require("../models/Product/ProductsModel");
 const ajv = new Ajv();
 const validateProduct = ajv.compile(productSchema);
 
+/**
+ * 
+ * Função para adicionar produto
+ */
 const create = async (req, res) => {
     try {
         const { productName, productCategory } = req.body;
@@ -34,6 +38,10 @@ const create = async (req, res) => {
     }
 };
 
+/**
+ * 
+ * Função para listar produtos
+ */
 const list = async (req, res) => {
     try {
         const listAllProducts = await Product.find();
@@ -44,6 +52,10 @@ const list = async (req, res) => {
     }
 }
 
+/**
+ * 
+ * Função para encontrar produto por id
+ */
 const findById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -59,6 +71,10 @@ const findById = async (req, res) => {
     }
 }
 
+/**
+ * 
+ * Função para atualizar produto por id
+ */
 const update = async (req, res) => {
     try {
         const { id } = req.params;
@@ -94,6 +110,10 @@ const update = async (req, res) => {
     }
 }
 
+/**
+ * 
+ * Função para remover produto
+ */
 const remove = async (req, res) => {
     try {
         const { id } = req.params;
