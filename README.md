@@ -31,7 +31,13 @@ cd LaSalle-2024-1-API-RESTful
 ./start.sh
 ```
 
-3. Quando terminar de executar todos os comandos, o projeto pode ser acessado no navegador <a href="http://localhost:5173">localhost</a>.
+4. Caso o script não funcione, basta utilizar o comando 
+```bash 
+npm run dev
+```
+dentro da pasta client e server
+
+5. Quando terminar de executar todos os comandos, o projeto pode ser acessado no navegador <a href="http://localhost:5173">localhost</a>.
 
 ### Notas
 - É necessário ter o nodejs 18+ instalado para executar o projeto localmente.
