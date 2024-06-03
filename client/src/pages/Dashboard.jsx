@@ -3,6 +3,7 @@ import BarChart from "../components/BarChart";
 import API from "../services/axios-config";
 import { separateCategories } from "../helpers/separateCategories";
 import { useEffect, useState } from "react";
+import PieChart from "../components/PieChart";
 
 function Dashboard() {
     const [dataChart, setDataChart] = useState();
@@ -28,8 +29,6 @@ function Dashboard() {
         getData();
     }, [])
 
-    console.log(dataChart);
-
     return (
         <div className="container mt-4">
             <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
@@ -47,9 +46,18 @@ function Dashboard() {
             </div>
             <div className="mt-8">
                 <h3 className="text-lg font-semibold mb-2">Quantidade de produtos por categoria</h3>
-                {dataChart ? (
-                    <BarChart dataChart={dataChart} />
-                ) : null}
+                <div className="flex gap-2 w-full">
+                    <div className="flex w-1/2">
+                        {dataChart ? (
+                            <BarChart dataChart={dataChart} />
+                        ) : null}
+                    </div>
+                    <div className="flex w-1/2">
+                        {dataChart ? (
+                            <PieChart dataChart={dataChart} />
+                        ) : null}
+                    </div>
+                </div>
             </div>
         </div>
     );
