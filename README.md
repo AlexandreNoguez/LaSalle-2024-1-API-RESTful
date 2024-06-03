@@ -33,9 +33,9 @@ cd LaSalle-2024-1-API-RESTful
 
 4. Caso o script não funcione, basta utilizar o comando 
 ```bash 
-npm run dev
+npm install && npm run dev
 ```
-dentro da pasta client e server
+dentro da pasta client e em outro terminal na pasta server também.
 
 5. Quando terminar de executar todos os comandos, o projeto pode ser acessado no navegador <a href="http://localhost:5173">localhost</a>.
 
