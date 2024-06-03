@@ -30,6 +30,7 @@ git clone https://github.com/AlexandreNoguez/LaSalle-2024-1-API-RESTful
 cd LaSalle-2024-1-API-RESTful
 ./start.sh
 ```
+3. Configure o arquivo **.env** com as credenciais do seu banco de acordo com o **.env.example**
 
 4. Caso o script não funcione, basta utilizar o comando 
 ```bash 
