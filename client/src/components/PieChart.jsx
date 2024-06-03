@@ -1,7 +1,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import PropTypes from 'prop-types'
-import { generateRandomColor, getColor } from '../helpers/generateColor';
+import { getColor } from '../helpers/generateColor';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -45,7 +45,7 @@ function PieChart({ dataChart }) {
         ],
     };
 
-    return <Pie data={data} />;
+    return <Pie data={data} options={{ maintainAspectRatio: false }} width={300} height={300} />;
 }
 
 export default PieChart;

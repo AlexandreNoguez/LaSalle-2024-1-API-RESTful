@@ -29,7 +29,10 @@ ChartJS.register(
 function BarChart({ dataChart }) {
 
     const options = {
-        responsive: true,
+        // responsive: true,
+        maintainAspectRatio: false,
+        width: 600,
+        heigth: 300,
         plugins: {
             legend: {
                 position: 'top',
